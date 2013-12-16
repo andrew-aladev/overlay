@@ -7,8 +7,8 @@ EAPI="5"
 inherit cmake-utils git-2
 
 DESCRIPTION="Lightweight implementation of simplified talloc api."
-HOMEPAGE="https://github.com/andrew-aladev/talloc2"
-EGIT_REPO_URI="git://github.com/andrew-aladev/talloc2.git"
+HOMEPAGE="https://github.com/andrew-aladev/tralloc"
+EGIT_REPO_URI="git://github.com/andrew-aladev/tralloc.git"
 
 LICENSE="LGPL-3+"
 SLOT="0/9999"
@@ -18,12 +18,12 @@ IUSE="debug shared-libs static-libs man test"
 
 IUSE_FEATURES="destructor reference"
 for feature in ${IUSE_FEATURES}; do
-    IUSE="${IUSE} talloc2_features_${feature}"
+    IUSE="${IUSE} tralloc_features_${feature}"
 done
 
 IUSE_UTILS="buffer dynarr"
 for util in ${IUSE_UTILS}; do
-    IUSE="${IUSE} talloc2_utils_${util}"
+    IUSE="${IUSE} tralloc_utils_${util}"
 done
 
 RDEPEND="man? ( app-text/asciidoc )"
@@ -35,17 +35,17 @@ src_unpack() {
 
 src_configure() {
     local mycmakeargs=(
-        $(cmake-utils_use debug       TALLOC_DEBUG)
-        $(cmake-utils_use shared-libs TALLOC_SHARED)
-        $(cmake-utils_use static-libs TALLOC_STATIC)
-        $(cmake-utils_use man         TALLOC_MAN)
-        $(cmake-utils_use test        TALLOC_TEST)
+        $(cmake-utils_use debug       TRALLOC_DEBUG)
+        $(cmake-utils_use shared-libs TRALLOC_SHARED)
+        $(cmake-utils_use static-libs TRALLOC_STATIC)
+        $(cmake-utils_use man         TRALLOC_MAN)
+        $(cmake-utils_use test        TRALLOC_TEST)
         
-        $(cmake-utils_use talloc2_features_destructor TALLOC_DESTRUCTOR)
-        $(cmake-utils_use talloc2_features_reference  TALLOC_REFERENCE)
+        $(cmake-utils_use tralloc2_features_destructor TRALLOC_DESTRUCTOR)
+        $(cmake-utils_use tralloc2_features_reference  TRALLOC_REFERENCE)
         
-        $(cmake-utils_use talloc2_utils_buffer TALLOC_UTILS_BUFFER)
-        $(cmake-utils_use talloc2_utils_dynarr TALLOC_UTILS_DYNARR)
+        $(cmake-utils_use tralloc2_utils_buffer TRALLOC_UTILS_BUFFER)
+        $(cmake-utils_use tralloc2_utils_dynarr TRALLOC_UTILS_DYNARR)
     )
     cmake-utils_src_configure
 }
