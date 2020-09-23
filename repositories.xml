@@ -9,7 +9,7 @@
       <email>aladjev.andrew@gmail.com</email>
       <name><![CDATA[Andrew Aladjev]]></name>
     </owner>
-    <source type="git">git@github.com:andrew-aladev/overlay.git</source>
+    <source type="git">https://github.com/andrew-aladev/overlay.git</source>
     <feed>https://github.com/andrew-aladev/overlay/commits/master.atom</feed>
   </repo>
 </repositories>
