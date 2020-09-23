@@ -11,7 +11,7 @@ SRC_URI="https://github.com/andrew-aladev/lzws/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ~arm arm64 ~mips x86"
 
 IUSE="static test noman"
 
