@@ -12,7 +12,7 @@ EGIT_SUBMODULES=()
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+KEYWORDS=""
 
 IUSE="static test noman"
 
