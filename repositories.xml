@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[andrew-aladev]]></name>
+    <description lang="en"><![CDATA[Andrew Aladjev gentoo overlay]]></description>
+    <homepage>https://github.com/andrew-aladev/overlay</homepage>
+    <owner type="person">
+      <email>aladjev.andrew@gmail.com</email>
+      <name><![CDATA[Andrew Aladjev]]></name>
+    </owner>
+    <source type="git">git@github.com:andrew-aladev/overlay.git</source>
+    <feed>https://github.com/andrew-aladev/overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
