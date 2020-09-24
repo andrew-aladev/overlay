@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit cmake-multilib cmake-utils git-r3
 
@@ -24,9 +24,11 @@ done
 RDEPEND="
   virtual/libc
   dev-libs/gmp
+"
+DEPEND="
+  ${RDEPEND}
   !noman? ( app-text/asciidoc )
 "
-DEPEND="${RDEPEND}"
 
 src_configure() {
   local mycmakeargs=(
