@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ruby-lzws</herd>
+  <maintainer>
+    <email>aladjev.andrew@gmail.com</email>
+    <name>Andrew Aladjev</name>
+  </maintainer>
+  <longdescription>
+    Ruby bindings for lzws library.
+  </longdescription>
+  <use>
+    <flag name="test">Run tests</flag>
+  </use>
+</pkgmetadata>

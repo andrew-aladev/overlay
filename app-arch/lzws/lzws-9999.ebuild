@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,6 +9,7 @@ DESCRIPTION="LZW streaming compressor/decompressor compatible with UNIX compress
 HOMEPAGE="https://github.com/andrew-aladev/lzws"
 EGIT_REPO_URI="https://github.com/andrew-aladev/lzws.git"
 EGIT_SUBMODULES=()
+SRC_URI=""
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
