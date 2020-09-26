@@ -1,0 +1,30 @@
+diff --git a/Rakefile b/Rakefile
+index ede3a4d..30cb330 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -1,17 +1,8 @@
+-require "rake/extensiontask"
+ require "rake/testtask"
+ require "rubygems/package_task"
+ 
+ load "ruby-lzws.gemspec"
+ 
+-Rake::ExtensionTask.new do |ext|
+-  ext.name           = "lzws_ext"
+-  ext.ext_dir        = "ext"
+-  ext.lib_dir        = "lib"
+-  ext.tmp_dir        = "tmp"
+-  ext.source_pattern = "*.{c,h}"
+-end
+-
+ Rake::TestTask.new do |task|
+   task.libs << %w[lib]
+ 
+@@ -19,6 +10,6 @@ Rake::TestTask.new do |task|
+   task.test_files = ["test/coverage.rb"] + pathes.split("\n")
+ end
+ 
+-task :default => %i[compile test]
++task :default => %i[test]
+ 
+ Gem::PackageTask.new(GEMSPEC).define

@@ -26,4 +26,6 @@ PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
 )
 
-ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
+ruby_add_bdepend "
+  test? ( dev-ruby/minitest:5 )
+"
