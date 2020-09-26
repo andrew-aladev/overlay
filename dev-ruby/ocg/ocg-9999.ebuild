@@ -25,7 +25,7 @@ KEYWORDS=""
 IUSE="test"
 
 PATCHES=(
-  "${FILESDIR}/${PN}/gemspec.patch"
+  "${FILESDIR}/${PV}/gemspec.patch"
 )
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"

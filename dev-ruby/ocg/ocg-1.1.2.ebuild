@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~arm arm64 ~mips x86"
 IUSE="test"
 
 PATCHES=(
-  "${FILESDIR}/${PN}/gemspec.patch"
+  "${FILESDIR}/${PV}/gemspec.patch"
 )
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"

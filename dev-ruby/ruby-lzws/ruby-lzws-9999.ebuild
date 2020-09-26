@@ -25,8 +25,8 @@ KEYWORDS=""
 IUSE="test"
 
 PATCHES=(
-  "${FILESDIR}/${P}-gemspec.patch"
-  "${FILESDIR}/${P}-no-rake-compiler.patch"
+  "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
 RDEPEND="app-arch/lzws"
@@ -40,7 +40,7 @@ ruby_add_bdepend "
 "
 
 each_ruby_configure() {
-  ${RUBY} -Cext extconf.rb || die
+  "$RUBY" -Cext extconf.rb || die
 }
 
 each_ruby_compile() {
