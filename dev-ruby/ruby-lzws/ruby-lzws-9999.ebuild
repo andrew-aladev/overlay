@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}"
 ruby_add_bdepend "
   test? (
     dev-ruby/minitest:5
+    dev-ruby/minitar
     dev-ruby/ocg
   )
 "
