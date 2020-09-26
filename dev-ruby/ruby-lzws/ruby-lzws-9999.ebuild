@@ -30,7 +30,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND="app-arch/lzws"
+RDEPEND=">=app-arch/lzws-1.3"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "

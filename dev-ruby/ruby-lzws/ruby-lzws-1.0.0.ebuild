@@ -29,7 +29,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND="<app-arch/lzws-1.3"
+RDEPEND=">=app-arch/lzws-1.1 <app-arch/lzws-1.3"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "
