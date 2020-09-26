@@ -26,6 +26,7 @@ IUSE="test"
 
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/live-version.patch"
 )
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"

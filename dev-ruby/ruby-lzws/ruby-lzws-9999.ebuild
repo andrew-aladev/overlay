@@ -26,6 +26,7 @@ IUSE="test"
 
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/live-version.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
