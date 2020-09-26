@@ -1,0 +1,18 @@
+diff --git a/ext/extconf.rb b/ext/extconf.rb
+index e537a4c..7fa14b3 100644
+--- a/ext/extconf.rb
++++ b/ext/extconf.rb
+@@ -70,6 +70,13 @@ $srcs = sources
+   .map { |name| "src/#{extension_name}/#{name}.c" }
+   .freeze
+ 
++# Removing library duplicates.
++$libs = $libs.split(%r{\s})
++  .reject(&:empty?)
++  .sort
++  .uniq
++  .join " "
++
+ $CFLAGS << " -Wno-declaration-after-statement"
+ $VPATH << "$(srcdir)/#{extension_name}:$(srcdir)/#{extension_name}/stream"
+ # rubocop:enable Style/GlobalVars
