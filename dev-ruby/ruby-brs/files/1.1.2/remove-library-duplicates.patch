@@ -1,0 +1,18 @@
+diff --git a/ext/extconf.rb b/ext/extconf.rb
+index 1cd4d7e..fb3ad67 100644
+--- a/ext/extconf.rb
++++ b/ext/extconf.rb
+@@ -61,6 +61,13 @@ $srcs = %w[
+ .map { |name| "src/#{extension_name}/#{name}.c" }
+ .freeze
+ 
++# Removing library duplicates.
++$libs = $libs.split(%r{\s})
++  .reject(&:empty?)
++  .sort
++  .uniq
++  .join " "
++
+ if ENV["CI"] || ENV["COVERAGE"]
+   $CFLAGS << " --coverage"
+   $LDFLAGS << " --coverage"
