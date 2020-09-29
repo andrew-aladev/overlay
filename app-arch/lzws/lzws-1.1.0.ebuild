@@ -23,6 +23,7 @@ done
 RDEPEND="
   virtual/libc
   dev-libs/gmp
+  test? ( dev-libs/gmp[static-libs] )
 "
 DEPEND="
   ${RDEPEND}

@@ -4,7 +4,6 @@ set -e
 OVERLAY_NAME="andrew-aladev"
 IGNORE_USES=(
   "abi_*"
-  "noman"
   "ruby_targets_*"
   "test"
 )
@@ -46,7 +45,7 @@ for package in "${packages[@]}"; do
       use_value=$((1 << ($use_index - 1)))
 
       if [[ $(($combination & $use_value)) -eq $use_value ]]; then
-        current_uses+=("+${use}")
+        current_uses+=("$use")
       else
         current_uses+=("-${use}")
       fi
