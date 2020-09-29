@@ -4,6 +4,7 @@ set -e
 OVERLAY_NAME="andrew-aladev"
 IGNORE_USES=(
   "abi_*"
+  "noman"
   "ruby_targets_*"
   "test"
 )
@@ -51,7 +52,6 @@ for package in "${packages[@]}"; do
       fi
     done
 
-    echo "Testing package: \"$package\", uses: \"${current_uses[@]}\""
     FEATURES="test" USE="${current_uses[@]}" build.sh -v1 "$package"
   done
 done
