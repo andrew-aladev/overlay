@@ -31,6 +31,7 @@ PATCHES=(
 
 RDEPEND=">=app-arch/lzws-1.3"
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( app-arch/ncompress )"
 
 ruby_add_bdepend "
   test? (

@@ -15,22 +15,21 @@ LICENSE="BSD-3-Clause"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="static test noman"
-
-COMPRESSOR_DICTIONARIES="linked-list sparse-array"
-for compressor_dictionary in ${COMPRESSOR_DICTIONARIES}; do
-  IUSE+=" compressor_dictionary_${compressor_dictionary}"
-done
+IUSE_COMPRESSOR_DICTIONARY="
+  compressor_dictionary_linked-list
+  +compressor_dictionary_sparse-array
+"
+IUSE="${IUSE_COMPRESSOR_DICTIONARY} static test noman"
+IUSE_EXPAND="COMPRESSOR_DICTIONARY"
+REQUIRED_USE="^^ ( ${IUSE_COMPRESSOR_DICTIONARY/+/} )"
 
 RDEPEND="
   virtual/libc
   dev-libs/gmp
   static? ( dev-libs/gmp[static-libs] )
 "
-DEPEND="
-  ${RDEPEND}
-  !noman? ( app-text/asciidoc )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="!noman? ( app-text/asciidoc )"
 
 src_configure() {
   local mycmakeargs=(

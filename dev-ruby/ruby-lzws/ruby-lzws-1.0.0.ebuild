@@ -25,12 +25,14 @@ IUSE="test"
 PATCHES=(
   "${FILESDIR}/${PV}/add-tmp-directory.patch"
   "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/num2x.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
   "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
 RDEPEND=">=app-arch/lzws-1.1 <app-arch/lzws-1.3"
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( app-arch/ncompress )"
 
 ruby_add_bdepend "
   test? (

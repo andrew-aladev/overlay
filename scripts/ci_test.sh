@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Disabling CI and coverage flags.
+unset CI
+unset COVERAGE
+
 OVERLAY_NAME="andrew-aladev"
 NOT_IMPORTANT_USES=(
   "abi_*"
@@ -10,10 +14,12 @@ NOT_IMPORTANT_USES=(
   "test"
 )
 
-# List available packages with versions.
-mapfile -t packages < <(eix --in-overlay "$OVERLAY_NAME" --format '<availableversions:EQNAMEVERSION>' --pure-packages)
+# List available package names with versions.
+mapfile -t package_names < <(eix --in-overlay "$OVERLAY_NAME" --format '<availableversions:EQNAMEVERSION>' --pure-packages)
 
-for package in "${packages[@]}"; do
+for package_name in "${package_names[@]}"; do
+  package="${package_name}::${OVERLAY_NAME}"
+
   # List available uses for package.
   mapfile -t uses < <(equery --quiet uses "$package" | sed "s/^[+-]//")
 
@@ -44,7 +50,7 @@ for package in "${packages[@]}"; do
 
     for use_index in "${!important_uses[@]}"; do
       use="${important_uses[$use_index]}"
-      use_value=$((1 << ($use_index - 1)))
+      use_value=$((1 << $use_index))
 
       if [[ $(($combination & $use_value)) -eq $use_value ]]; then
         current_uses+=("$use")
@@ -53,6 +59,11 @@ for package in "${packages[@]}"; do
       fi
     done
 
-    FEATURES="test" USE="${current_uses[@]}" build.sh -v1 "$package"
+    echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
+
+    # Current uses may be invalid for package.
+    if USE="${current_uses[@]}" build.sh -pv1 "$package"; then
+      FEATURES="test" USE="${current_uses[@]}" build.sh -v1 "$package"
+    fi
   done
 done
