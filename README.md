@@ -1,9 +1,5 @@
 # Gentoo overlay
 
-| Circle |
-| :---:  |
-| [![Circle test status](https://circleci.com/gh/andrew-aladev/overlay/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/overlay/tree/master) |
-
 ## Install as local overlay
 
 Use the following command:
