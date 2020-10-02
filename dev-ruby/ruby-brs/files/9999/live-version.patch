@@ -1,11 +1,11 @@
 diff --git a/lib/brs/version.rb b/lib/brs/version.rb
-index f4dd1af..2774fe5 100644
+index 1fd556b..2774fe5 100644
 --- a/lib/brs/version.rb
 +++ b/lib/brs/version.rb
 @@ -2,5 +2,5 @@
  # Copyright (c) 2019 AUTHORS, MIT License.
  
  module BRS
--  VERSION = "1.1.4".freeze
+-  VERSION = "1.1.5".freeze
 +  VERSION = "9999".freeze
  end
