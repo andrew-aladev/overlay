@@ -25,7 +25,7 @@ IUSE="test"
 PATCHES=(
   "${FILESDIR}/${PV}/add-tmp-directory.patch"
   "${FILESDIR}/${PV}/gemspec.patch"
-  "${FILESDIR}/${PV}/port-auto-change.patch"
+  "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
   "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )

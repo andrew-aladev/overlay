@@ -1,0 +1,91 @@
+diff --git a/test/common.rb b/test/common.rb
+index b6534b3..e877bc0 100644
+--- a/test/common.rb
++++ b/test/common.rb
+@@ -23,8 +23,6 @@ module LZWS
+       ]
+       .each { |path| FileUtils.touch path }
+ 
+-      PORT = 54_001
+-
+       ENCODINGS = %w[
+         binary
+         UTF-8
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index 3eb73f1..54f3011 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -20,7 +20,6 @@ module LZWS
+         String = LZWS::String
+ 
+         ARCHIVE_PATH      = Common::ARCHIVE_PATH
+-        PORT              = Common::PORT
+         ENCODINGS         = Common::ENCODINGS
+         TRANSCODE_OPTIONS = Common::TRANSCODE_OPTIONS
+         TEXTS             = Common::TEXTS
+@@ -241,7 +240,7 @@ module LZWS
+         end
+ 
+         def test_readpartial
+-          ::TCPServer.open PORT do |server|
++          ::TCPServer.open 0 do |server|
+             TEXTS.each do |text|
+               PORTION_LENGTHS.each do |portion_length|
+                 COMPATIBLE_OPTION_COMBINATIONS.each do |compressor_options, decompressor_options|
+@@ -261,7 +260,7 @@ module LZWS
+                     prev_result       = "".b
+                     decompressed_text = "".b
+ 
+-                    ::TCPSocket.open "localhost", PORT do |socket|
++                    ::TCPSocket.open "localhost", server.addr[1] do |socket|
+                       instance = target.new socket, decompressor_options
+ 
+                       begin
+@@ -296,7 +295,7 @@ module LZWS
+         # -- asynchronous --
+ 
+         def test_read_nonblock
+-          ::TCPServer.open PORT do |server|
++          ::TCPServer.open 0 do |server|
+             TEXTS.each do |text|
+               PORTION_LENGTHS.each do |portion_length|
+                 COMPATIBLE_OPTION_COMBINATIONS.each do |compressor_options, decompressor_options|
+@@ -324,7 +323,7 @@ module LZWS
+ 
+                   decompressed_text = "".b
+ 
+-                  ::TCPSocket.open "localhost", PORT do |socket|
++                  ::TCPSocket.open "localhost", server.addr[1] do |socket|
+                     instance = target.new socket, decompressor_options
+ 
+                     begin
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index 3abe317..c2e6dae 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -19,7 +19,6 @@ module LZWS
+         String = LZWS::String
+ 
+         ARCHIVE_PATH      = Common::ARCHIVE_PATH
+-        PORT              = Common::PORT
+         ENCODINGS         = Common::ENCODINGS
+         TRANSCODE_OPTIONS = Common::TRANSCODE_OPTIONS
+         TEXTS             = Common::TEXTS
+@@ -139,7 +138,7 @@ module LZWS
+         # -- asynchronous --
+ 
+         def test_write_nonblock
+-          ::TCPServer.open PORT do |server|
++          ::TCPServer.open 0 do |server|
+             TEXTS.each do |text|
+               PORTION_LENGTHS.each do |portion_length|
+                 sources = get_sources text, portion_length
+@@ -163,7 +162,7 @@ module LZWS
+                     end
+                   end
+ 
+-                  TCPSocket.open "localhost", PORT do |socket|
++                  TCPSocket.open "localhost", server.addr[1] do |socket|
+                     instance = target.new socket, compressor_options
+ 
+                     begin

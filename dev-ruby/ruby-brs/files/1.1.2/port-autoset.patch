@@ -1,0 +1,73 @@
+diff --git a/test/common.rb b/test/common.rb
+index ffa7f5f..5517e88 100644
+--- a/test/common.rb
++++ b/test/common.rb
+@@ -18,8 +18,6 @@ module BRS
+       ]
+       .each { |path| FileUtils.touch path }
+ 
+-      PORT = 54_020
+-
+       ENCODINGS = %w[
+         binary
+         UTF-8
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index ee12199..72b4a01 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -20,7 +20,6 @@ module BRS
+         String = BRS::String
+ 
+         ARCHIVE_PATH          = Common::ARCHIVE_PATH
+-        PORT                  = Common::PORT
+         ENCODINGS             = Common::ENCODINGS
+         TRANSCODE_OPTIONS     = Common::TRANSCODE_OPTIONS
+         TEXTS                 = Common::TEXTS
+@@ -361,7 +360,7 @@ module BRS
+         # -- server --
+ 
+         protected def start_server(&block)
+-          ::TCPServer.open PORT, &block
++          ::TCPServer.open 0, &block
+         end
+ 
+         protected def server_nonblock_test(server, text, compressor_options = {}, decompressor_options = {}, &_block)
+@@ -388,7 +387,7 @@ module BRS
+           end
+ 
+           decompressed_text =
+-            ::TCPSocket.open "localhost", PORT do |socket|
++            ::TCPSocket.open "localhost", server.addr[1] do |socket|
+               instance = target.new socket, decompressor_options
+ 
+               begin
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index 2aea804..22eb9f5 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -19,7 +19,6 @@ module BRS
+         String = BRS::String
+ 
+         ARCHIVE_PATH          = Common::ARCHIVE_PATH
+-        PORT                  = Common::PORT
+         ENCODINGS             = Common::ENCODINGS
+         TRANSCODE_OPTIONS     = Common::TRANSCODE_OPTIONS
+         TEXTS                 = Common::TEXTS
+@@ -374,7 +373,7 @@ module BRS
+         # -- server --
+ 
+         protected def start_server(&block)
+-          ::TCPServer.open PORT, &block
++          ::TCPServer.open 0, &block
+         end
+ 
+         protected def server_nonblock_test(server, text, portion_length, compressor_options = {}, decompressor_options = {}, &_block)
+@@ -396,7 +395,7 @@ module BRS
+             end
+           end
+ 
+-          TCPSocket.open "localhost", PORT do |socket|
++          TCPSocket.open "localhost", server.addr[1] do |socket|
+             instance = target.new socket, compressor_options
+ 
+             begin

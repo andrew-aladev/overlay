@@ -1,0 +1,73 @@
+diff --git a/test/common.rb b/test/common.rb
+index 05188d6..475d2fa 100644
+--- a/test/common.rb
++++ b/test/common.rb
+@@ -18,8 +18,6 @@ module ZSTDS
+       ]
+       .each { |path| FileUtils.touch path }
+ 
+-      PORT = 54_030
+-
+       ENCODINGS = %w[
+         binary
+         UTF-8
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index 357441d..cdf698b 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -19,7 +19,6 @@ module ZSTDS
+         String = ZSTDS::String
+ 
+         ARCHIVE_PATH          = Common::ARCHIVE_PATH
+-        PORT                  = Common::PORT
+         ENCODINGS             = Common::ENCODINGS
+         TRANSCODE_OPTIONS     = Common::TRANSCODE_OPTIONS
+         TEXTS                 = Common::TEXTS
+@@ -379,7 +378,7 @@ module ZSTDS
+         # -- server --
+ 
+         protected def start_server(&block)
+-          ::TCPServer.open PORT, &block
++          ::TCPServer.open 0, &block
+         end
+ 
+         protected def server_nonblock_test(server, text, compressor_options = {}, decompressor_options = {}, &_block)
+@@ -406,7 +405,7 @@ module ZSTDS
+           end
+ 
+           decompressed_text =
+-            ::TCPSocket.open "localhost", PORT do |socket|
++            ::TCPSocket.open "localhost", server.addr[1] do |socket|
+               instance = target.new socket, decompressor_options
+ 
+               begin
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index c51565c..c69a6b4 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -18,7 +18,6 @@ module ZSTDS
+         String = ZSTDS::String
+ 
+         ARCHIVE_PATH          = Common::ARCHIVE_PATH
+-        PORT                  = Common::PORT
+         ENCODINGS             = Common::ENCODINGS
+         TRANSCODE_OPTIONS     = Common::TRANSCODE_OPTIONS
+         TEXTS                 = Common::TEXTS
+@@ -373,7 +372,7 @@ module ZSTDS
+         # -- server --
+ 
+         protected def start_server(&block)
+-          ::TCPServer.open PORT, &block
++          ::TCPServer.open 0, &block
+         end
+ 
+         protected def server_nonblock_test(server, text, portion_length, compressor_options = {}, decompressor_options = {}, &_block)
+@@ -395,7 +394,7 @@ module ZSTDS
+             end
+           end
+ 
+-          TCPSocket.open "localhost", PORT do |socket|
++          TCPSocket.open "localhost", server.addr[1] do |socket|
+             instance = target.new socket, compressor_options
+ 
+             begin
