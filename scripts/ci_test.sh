@@ -59,11 +59,11 @@ for package_name in "${package_names[@]}"; do
       fi
     done
 
-    echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
+    command="FEATURES=\"test\" USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
 
     # Current uses may be invalid for package.
-    if USE="${current_uses[@]}" build.sh -pv1 "$package"; then
-      FEATURES="test" USE="${current_uses[@]}" build.sh -v1 "$package"
+    if bash -cl "${command} --pretend"; then
+      bash -cl "$command"
     fi
   done
 done
