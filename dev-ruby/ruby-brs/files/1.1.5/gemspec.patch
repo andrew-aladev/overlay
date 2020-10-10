@@ -1,10 +1,10 @@
 diff --git a/ruby-brs.gemspec b/ruby-brs.gemspec
-index 7c097e1..a5a53f6 100644
+index 6843536..1a9713b 100644
 --- a/ruby-brs.gemspec
 +++ b/ruby-brs.gemspec
 @@ -28,7 +28,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
-
+ 
    gem.files =
 -    `git ls-files -z --directory {ext,lib}`.split("\x0") +
 +    `find {ext,lib} -type f -print0`.split("\x0") +

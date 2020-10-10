@@ -1,10 +1,10 @@
 diff --git a/ruby-lzws.gemspec b/ruby-lzws.gemspec
-index 7995759..ebf8f4e 100644
+index 6ebf46a..7ec4797 100644
 --- a/ruby-lzws.gemspec
 +++ b/ruby-lzws.gemspec
 @@ -28,7 +28,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
-
+ 
    gem.files =
 -    `git ls-files -z --directory {ext,lib}`.split("\x0") +
 +    `find {ext,lib} -type f -print0`.split("\x0") +
