@@ -30,7 +30,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND=">=app-arch/lzws-1.3"
+RDEPEND=">=app-arch/lzws-1.3 <app-arch/lzws-1.4"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-arch/ncompress )"
 

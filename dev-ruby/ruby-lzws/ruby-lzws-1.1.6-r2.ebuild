@@ -24,10 +24,11 @@ IUSE="test"
 
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND=">=app-arch/lzws-1.3"
+RDEPEND=">=app-arch/lzws-1.3 <app-arch/lzws-1.4"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-arch/ncompress )"
 

@@ -26,9 +26,10 @@ PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
   "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND="app-arch/brotli"
+RDEPEND=">=app-arch/brotli-1.0 <app-arch/brotli-1.1"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "

@@ -23,14 +23,11 @@ KEYWORDS="amd64 ~arm arm64 ~mips x86"
 IUSE="test"
 
 PATCHES=(
-  "${FILESDIR}/${PV}/add-tmp-directory.patch"
   "${FILESDIR}/${PV}/gemspec.patch"
-  "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
-  "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND="app-arch/zstd"
+RDEPEND=">=app-arch/zstd-1.4 <app-arch/zstd-1.5"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "

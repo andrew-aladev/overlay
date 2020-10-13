@@ -23,12 +23,14 @@ KEYWORDS="amd64 ~arm arm64 ~mips x86"
 IUSE="test"
 
 PATCHES=(
+  "${FILESDIR}/${PV}/add-tmp-directory.patch"
   "${FILESDIR}/${PV}/gemspec.patch"
   "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND=">=app-arch/lzws-1.3"
+RDEPEND=">=app-arch/lzws-1.3 <app-arch/lzws-1.4"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-arch/ncompress )"
 

@@ -30,7 +30,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND="app-arch/brotli"
+RDEPEND=">=app-arch/brotli-1.0"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "

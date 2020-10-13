@@ -30,7 +30,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND="app-arch/zstd"
+RDEPEND=">=app-arch/zstd-1.4"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "

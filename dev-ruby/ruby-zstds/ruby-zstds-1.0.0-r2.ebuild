@@ -29,7 +29,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND="app-arch/zstd"
+RDEPEND=">=app-arch/zstd-1.4 <app-arch/zstd-1.5"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "
