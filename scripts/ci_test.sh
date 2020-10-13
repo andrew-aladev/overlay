@@ -60,10 +60,12 @@ for package_name in "${package_names[@]}"; do
     done
 
     command="FEATURES=\"test\" USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
+    echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
 
-    # Current uses may be invalid for package.
-    if bash -cl "${command} --pretend"; then
+    if bash -cl "${command} --pretend" > /dev/null 2>&1; then
       bash -cl "$command"
+    else
+      echo "Current uses is invalid for package"
     fi
   done
 done
