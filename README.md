@@ -37,10 +37,10 @@ emerge -v category/name
 
 ## CI
 
-See universal test script [scripts/ci_test.sh](scripts/ci_test.sh) for CI.
 Please visit [scripts/test-images](scripts/test-images).
-You can run this test script using many native and cross images.
+See universal test script [scripts/ci_test.sh](scripts/ci_test.sh) for CI.
+You can run this script using many native and cross images.
 
 ## License
 
-MIT license, see LICENSE and AUTHORS.
+MIT license, see [LICENSE](LICENSE) and [AUTHORS](AUTHORS).
