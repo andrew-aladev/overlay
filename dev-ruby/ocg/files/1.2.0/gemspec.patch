@@ -1,5 +1,5 @@
 diff --git a/ocg.gemspec b/ocg.gemspec
-index a028486..d6f4a8a 100644
+index a028486..6a8c53b 100644
 --- a/ocg.gemspec
 +++ b/ocg.gemspec
 @@ -25,7 +25,7 @@ GEMSPEC = Gem::Specification.new do |gem|
@@ -7,7 +7,7 @@ index a028486..d6f4a8a 100644
  
    gem.files =
 -    `git ls-files -z --directory lib`.split("\x0") +
-+    `find lib -type f -print0`.split("\x0") + \
++    `find lib -type f -print0`.split("\x0") +
      %w[AUTHORS LICENSE README.md]
    gem.require_paths = %w[lib]
  
