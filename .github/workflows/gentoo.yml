@@ -5,6 +5,7 @@ on:
 
 jobs:
   gentoo:
+    runs-on: ubuntu-20.04
     container: puchuu/test-overlay_i686-gentoo-linux-musl:latest
 
     steps:
