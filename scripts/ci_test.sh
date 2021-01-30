@@ -1,10 +1,19 @@
 #!/bin/bash
 set -e
 
+# We are testing only best versions in slots by default.
+# It is possible to test all available versions by passing "all" as first argument.
+if [ "$1" == "all" ]; then
+  target_versions="availableversions"
+else
+  target_versions="bestslotversions"
+fi
+
 # Disabling CI and coverage flags.
 unset CI
 unset COVERAGE
 
+# Overlay specific constants.
 OVERLAY_NAME="andrew-aladev"
 NOT_IMPORTANT_USES=(
   "abi_*"
@@ -15,7 +24,11 @@ NOT_IMPORTANT_USES=(
 )
 
 # List available package names with versions.
-mapfile -t package_names < <(eix --in-overlay "$OVERLAY_NAME" --format '<availableversions:EQNAMEVERSION>' --pure-packages)
+mapfile -t package_names < <(eix \
+  --in-overlay "$OVERLAY_NAME" \
+  --format "<${target_versions}:EQNAMEVERSION>" \
+  --pure-packages \
+)
 
 for package_name in "${package_names[@]}"; do
   package="${package_name}::${OVERLAY_NAME}"
@@ -62,10 +75,11 @@ for package_name in "${package_names[@]}"; do
     command="FEATURES=\"test\" USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
     echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
 
+    # Ignoring invalid uses for package.
     if bash -cl "${command} --pretend" > /dev/null 2>&1; then
       bash -cl "$command"
     else
-      echo "Current uses is invalid for package"
+      echo "Current uses are invalid for package"
     fi
   done
 done

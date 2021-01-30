@@ -1,5 +1,9 @@
 # Gentoo overlay
 
+| Github actions |
+| :------------: |
+| [![Github Actions test status](https://github.com/andrew-aladev/overlay/workflows/test/badge.svg?branch=master)](https://github.com/andrew-aladev/overlay/actions) |
+
 ## Install as local overlay
 
 Use the following command:

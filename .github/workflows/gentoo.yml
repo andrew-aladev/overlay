@@ -1,0 +1,12 @@
+name: test
+
+on:
+  - push
+
+jobs:
+  gentoo:
+    container: puchuu/test-overlay_i686-gentoo-linux-musl:latest
+
+    steps:
+      - name: CI test
+        run: scripts/ci_test.sh
