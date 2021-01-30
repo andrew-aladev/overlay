@@ -72,14 +72,17 @@ for package_name in "${package_names[@]}"; do
       fi
     done
 
-    command="FEATURES=\"test\" USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
     echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
+    command="USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
+    commands=("$command" "FEATURES=\"test\" ${command}")
 
-    # Ignoring invalid uses for package.
-    if bash -cl "${command} --pretend" > /dev/null 2>&1; then
-      bash -cl "$command"
-    else
-      echo "Current uses are invalid for package"
-    fi
+    for command in "${commands[@]}"; do
+      # Ignoring invalid uses for package.
+      if bash -cl "${command} --pretend" > /dev/null 2>&1; then
+        bash -cl "$command"
+      else
+        echo "Current uses are invalid for package"
+      fi
+    done
   done
 done

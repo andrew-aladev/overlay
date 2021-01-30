@@ -12,9 +12,9 @@ RUBY_FAKEGEM_TASK_TEST="test"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby bindings for brotli library."
-HOMEPAGE="https://github.com/andrew-aladev/ruby-brs"
-SRC_URI="https://github.com/andrew-aladev/ruby-brs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Ruby bindings for lzws library."
+HOMEPAGE="https://github.com/andrew-aladev/ruby-lzws"
+SRC_URI="https://github.com/andrew-aladev/ruby-lzws/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,14 +27,16 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND=">=app-arch/brotli-1.0 <app-arch/brotli-1.1"
+RDEPEND=">=app-arch/lzws-1.4 <app-arch/lzws-1.5"
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( app-arch/ncompress )"
 
 ruby_add_bdepend "
   test? (
     dev-ruby/minitest:5
     dev-ruby/minitar
     dev-ruby/ocg
+    dev-ruby/parallel
   )
 "
 
@@ -44,5 +46,5 @@ each_ruby_configure() {
 
 each_ruby_compile() {
   emake V=1 -Cext
-  mv ext/brs_ext.so lib/ || die
+  mv ext/lzws_ext.so lib/ || die
 }

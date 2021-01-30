@@ -16,6 +16,7 @@ dev-ruby/json ~x86
 dev-ruby/kpeg ~x86
 dev-ruby/minitest ~x86
 dev-ruby/net-telnet ~x86
+dev-ruby/parallel ~x86
 dev-ruby/power_assert ~x86
 dev-ruby/test-unit ~x86
 dev-ruby/xmlrpc ~x86

@@ -16,6 +16,7 @@ dev-ruby/json ~amd64
 dev-ruby/kpeg ~amd64
 dev-ruby/minitest ~amd64
 dev-ruby/net-telnet ~amd64
+dev-ruby/parallel ~amd64
 dev-ruby/power_assert ~amd64
 dev-ruby/test-unit ~amd64
 dev-ruby/xmlrpc ~amd64
