@@ -58,6 +58,8 @@ for package_name in "${package_names[@]}"; do
   important_uses_length="${#important_uses[*]}"
   combinations_length=$((1 << $important_uses_length))
 
+  some_test_passed=false
+
   for ((combination = 0; combination < $combinations_length; combination++)); do
     current_uses=()
 
@@ -78,8 +80,14 @@ for package_name in "${package_names[@]}"; do
     # Ignoring invalid uses for package.
     if bash -cl "${command} --pretend"; then
       bash -cl "$command"
+      some_test_passed=true
     else
       echo "Current uses are invalid for package"
     fi
   done
+
+  if [ "$some_test_passed" = false ]; then
+    echo "At least one test should pass for package: \"${package}\"" > "/dev/stderr"
+    exit 1
+  fi
 done
