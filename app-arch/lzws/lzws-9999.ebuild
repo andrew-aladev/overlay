@@ -19,14 +19,34 @@ IUSE_COMPRESSOR_DICTIONARY="
   compressor_dictionary_linked-list
   +compressor_dictionary_sparse-array
 "
-IUSE="${IUSE_COMPRESSOR_DICTIONARY} static test noman"
-IUSE_EXPAND="COMPRESSOR_DICTIONARY"
-REQUIRED_USE="^^ ( ${IUSE_COMPRESSOR_DICTIONARY/+/} )"
+IUSE_BIGNUM_LIBRARY="
+  +bignum_library_gmp
+  bignum_library_tommath
+"
+IUSE="
+  ${IUSE_COMPRESSOR_DICTIONARY}
+  ${IUSE_BIGNUM_LIBRARY}
+  static
+  test
+  noman
+"
+IUSE_EXPAND="
+  COMPRESSOR_DICTIONARY
+  BIGNUM_LIBRARY
+"
+REQUIRED_USE="
+  ^^ ( ${IUSE_COMPRESSOR_DICTIONARY/+/} )
+  ^^ ( ${IUSE_BIGNUM_LIBRARY/+/} )
+"
 
 RDEPEND="
   virtual/libc
-  dev-libs/gmp
-  static? ( dev-libs/gmp[static-libs] )
+  bignum_library_gmp? ( dev-libs/gmp )
+  bignum_library_tommath? ( dev-libs/libtommath )
+  static? (
+    bignum_library_gmp? ( dev-libs/gmp[static-libs] )
+    bignum_library_tommath? ( dev-libs/libtommath[static-libs] )
+  )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="!noman? ( app-text/asciidoc )"
@@ -34,6 +54,7 @@ BDEPEND="!noman? ( app-text/asciidoc )"
 src_configure() {
   local mycmakeargs=(
     -DLZWS_COMPRESSOR_DICTIONARY=$(usex compressor_dictionary_linked-list linked-list sparse-array)
+    -DLZWS_BIGNUM_LIBRARY=$(usex bignum_library_gmp gmp tommath)
     -DLZWS_SHARED=ON
     -DLZWS_STATIC=$(usex static)
     -DLZWS_CLI=ON

@@ -12,6 +12,8 @@
   <use>
     <flag name="compressor_dictionary_linked-list">Use linked list as compressor dictionary</flag>
     <flag name="compressor_dictionary_sparse-array">Use sparse array as compressor dictionary</flag>
+    <flag name="bignum_library_gmp">Use gmp as bignum library</flag>
+    <flag name="bignum_library_tommath">Use tommath as bignum library</flag>
     <flag name="static">Build static binaries</flag>
     <flag name="test">Build and run tests</flag>
     <flag name="noman">Disable creating of man pages</flag>
