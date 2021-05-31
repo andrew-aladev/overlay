@@ -1,11 +1,11 @@
 diff --git a/lib/ocg/version.rb b/lib/ocg/version.rb
-index af24791..9d924a1 100644
+index 57ece64..9d924a1 100644
 --- a/lib/ocg/version.rb
 +++ b/lib/ocg/version.rb
 @@ -2,5 +2,5 @@
  # Copyright (c) 2019 AUTHORS, MIT License.
- 
+
  class OCG
--  VERSION = "1.3.2".freeze
+-  VERSION = "1.3.3".freeze
 +  VERSION = "9999".freeze
  end

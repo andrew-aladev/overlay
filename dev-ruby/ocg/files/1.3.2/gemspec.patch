@@ -1,5 +1,5 @@
 diff --git a/ocg.gemspec b/ocg.gemspec
-index aa91248..f9ddccc 100644
+index 2451a1b..93ca6f0 100644
 --- a/ocg.gemspec
 +++ b/ocg.gemspec
 @@ -25,7 +25,7 @@ GEMSPEC = Gem::Specification.new do |gem|
