@@ -4,7 +4,7 @@ index cec3601..0b38486 100644
 +++ b/ruby-zstds.gemspec
 @@ -29,7 +29,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
- 
+
    gem.files =
 -    `git ls-files -z --directory {ext,lib}`.split("\x0") +
 +    `find {ext,lib} -type f -print0`.split("\x0") +
