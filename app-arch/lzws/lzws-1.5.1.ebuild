@@ -3,17 +3,15 @@
 
 EAPI="7"
 
-inherit cmake-multilib cmake-utils git-r3
+inherit cmake-multilib cmake-utils
 
 DESCRIPTION="LZW streaming compressor/decompressor compatible with UNIX compress."
 HOMEPAGE="https://github.com/andrew-aladev/lzws"
-EGIT_REPO_URI="https://github.com/andrew-aladev/lzws.git"
-EGIT_SUBMODULES=()
-SRC_URI=""
+SRC_URI="https://github.com/andrew-aladev/lzws/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~x64-cygwin ~x64-macos ~x64-winnt x86 ~x86-winnt"
 
 IUSE_COMPRESSOR_DICTIONARY="
   compressor_dictionary_linked-list

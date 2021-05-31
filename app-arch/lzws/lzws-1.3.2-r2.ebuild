@@ -38,6 +38,7 @@ src_configure() {
     -DLZWS_TESTS=$(usex test)
     -DLZWS_EXAMPLES=OFF
     -DLZWS_MAN=$(usex noman OFF ON)
+    -DLZWS_COVERAGE=OFF
   )
 
   cmake-multilib_src_configure
