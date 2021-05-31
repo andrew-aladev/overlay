@@ -5,7 +5,7 @@ index 583131f..42ea4b5 100644
 @@ -61,6 +61,13 @@ $srcs = %w[
  .map { |name| "src/#{extension_name}/#{name}.c" }
  .freeze
- 
+
 +# Removing library duplicates.
 +$libs = $libs.split(%r{\s})
 +  .reject(&:empty?)

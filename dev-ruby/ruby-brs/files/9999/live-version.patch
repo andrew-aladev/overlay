@@ -4,7 +4,7 @@ index ba2d9fd..2774fe5 100644
 +++ b/lib/brs/version.rb
 @@ -2,5 +2,5 @@
  # Copyright (c) 2019 AUTHORS, MIT License.
- 
+
  module BRS
 -  VERSION = "1.2.1".freeze
 +  VERSION = "9999".freeze

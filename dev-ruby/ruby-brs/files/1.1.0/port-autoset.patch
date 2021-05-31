@@ -5,7 +5,7 @@ index 6b34a89..21dd869 100644
 @@ -18,8 +18,6 @@ module BRS
        ]
        .each { |path| FileUtils.touch path }
- 
+
 -      PORT = 54_020
 -
        ENCODINGS = %w[
@@ -17,7 +17,7 @@ index 6816f44..85dccd1 100644
 +++ b/test/stream/reader.test.rb
 @@ -20,7 +20,6 @@ module BRS
          String = BRS::String
- 
+
          ARCHIVE_PATH      = Common::ARCHIVE_PATH
 -        PORT              = Common::PORT
          ENCODINGS         = Common::ENCODINGS
@@ -25,7 +25,7 @@ index 6816f44..85dccd1 100644
          TEXTS             = Common::TEXTS
 @@ -264,7 +263,7 @@ module BRS
          end
- 
+
          def test_readpartial
 -          ::TCPServer.open PORT do |server|
 +          ::TCPServer.open 0 do |server|
@@ -35,15 +35,15 @@ index 6816f44..85dccd1 100644
 @@ -285,7 +284,7 @@ module BRS
                        prev_result       = "".b
                        decompressed_text = "".b
- 
+
 -                      ::TCPSocket.open "localhost", PORT do |socket|
 +                      ::TCPSocket.open "localhost", server.addr[1] do |socket|
                          instance = target.new socket, decompressor_options
- 
+
                          begin
 @@ -321,7 +320,7 @@ module BRS
          # -- asynchronous --
- 
+
          def test_read_nonblock
 -          ::TCPServer.open PORT do |server|
 +          ::TCPServer.open 0 do |server|
@@ -51,13 +51,13 @@ index 6816f44..85dccd1 100644
                PORTION_LENGTHS.each do |portion_length|
                  get_compressor_options do |compressor_options|
 @@ -350,7 +349,7 @@ module BRS
- 
+
                      decompressed_text = "".b
- 
+
 -                    ::TCPSocket.open "localhost", PORT do |socket|
 +                    ::TCPSocket.open "localhost", server.addr[1] do |socket|
                        instance = target.new socket, decompressor_options
- 
+
                        begin
 diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
 index 1396acc..5de17c9 100644
@@ -65,7 +65,7 @@ index 1396acc..5de17c9 100644
 +++ b/test/stream/writer.test.rb
 @@ -19,7 +19,6 @@ module BRS
          String = BRS::String
- 
+
          ARCHIVE_PATH      = Common::ARCHIVE_PATH
 -        PORT              = Common::PORT
          ENCODINGS         = Common::ENCODINGS
@@ -73,7 +73,7 @@ index 1396acc..5de17c9 100644
          TEXTS             = Common::TEXTS
 @@ -161,7 +160,7 @@ module BRS
          # -- asynchronous --
- 
+
          def test_write_nonblock
 -          ::TCPServer.open PORT do |server|
 +          ::TCPServer.open 0 do |server|
@@ -83,9 +83,9 @@ index 1396acc..5de17c9 100644
 @@ -186,7 +185,7 @@ module BRS
                        end
                      end
- 
+
 -                    TCPSocket.open "localhost", PORT do |socket|
 +                    TCPSocket.open "localhost", server.addr[1] do |socket|
                        instance = target.new socket, compressor_options
- 
+
                        begin
