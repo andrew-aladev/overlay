@@ -4,7 +4,7 @@ index f4fd44e..40a532a 100644
 +++ b/ruby-lzws.gemspec
 @@ -29,7 +29,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
- 
+
    gem.files =
 -    `git ls-files -z --directory {ext,lib}`.split("\x0") +
 +    `find {ext,lib} -type f -print0`.split("\x0") +

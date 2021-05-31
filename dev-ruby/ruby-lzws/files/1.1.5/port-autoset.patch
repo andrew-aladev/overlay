@@ -5,7 +5,7 @@ index b2e8237..06154d0 100644
 @@ -23,8 +23,6 @@ module LZWS
        ]
        .each { |path| FileUtils.touch path }
- 
+
 -      PORT = 54_010
 -
        ENCODINGS = %w[
@@ -17,7 +17,7 @@ index ce5f340..3ba25c8 100644
 +++ b/test/stream/reader.test.rb
 @@ -20,7 +20,6 @@ module LZWS
          String = LZWS::String
- 
+
          ARCHIVE_PATH          = Common::ARCHIVE_PATH
 -        PORT                  = Common::PORT
          ENCODINGS             = Common::ENCODINGS
@@ -25,21 +25,21 @@ index ce5f340..3ba25c8 100644
          TEXTS                 = Common::TEXTS
 @@ -447,7 +446,7 @@ module LZWS
          # -- server --
- 
+
          protected def start_server(&block)
 -          ::TCPServer.open PORT, &block
 +          ::TCPServer.open 0, &block
          end
- 
+
          protected def server_nonblock_test(server, text, compressor_options = {}, decompressor_options = {}, &_block)
 @@ -474,7 +473,7 @@ module LZWS
            end
- 
+
            decompressed_text =
 -            ::TCPSocket.open "localhost", PORT do |socket|
 +            ::TCPSocket.open "localhost", server.addr[1] do |socket|
                instance = target.new socket, decompressor_options
- 
+
                begin
 diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
 index a88e140..c48ccb2 100644
@@ -47,7 +47,7 @@ index a88e140..c48ccb2 100644
 +++ b/test/stream/writer.test.rb
 @@ -20,7 +20,6 @@ module LZWS
          String = LZWS::String
- 
+
          ARCHIVE_PATH          = Common::ARCHIVE_PATH
 -        PORT                  = Common::PORT
          ENCODINGS             = Common::ENCODINGS
@@ -55,19 +55,19 @@ index a88e140..c48ccb2 100644
          TEXTS                 = Common::TEXTS
 @@ -369,7 +368,7 @@ module LZWS
          # -- server --
- 
+
          protected def start_server(&block)
 -          ::TCPServer.open PORT, &block
 +          ::TCPServer.open 0, &block
          end
- 
+
          protected def server_nonblock_test(server, text, portion_length, compressor_options = {}, decompressor_options = {}, &_block)
 @@ -391,7 +390,7 @@ module LZWS
              end
            end
- 
+
 -          TCPSocket.open "localhost", PORT do |socket|
 +          TCPSocket.open "localhost", server.addr[1] do |socket|
              instance = target.new socket, compressor_options
- 
+
              begin

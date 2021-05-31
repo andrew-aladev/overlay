@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/andrew-aladev/ruby-lzws/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~mips x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~x64-cygwin ~x64-macos ~x64-winnt x86 ~x86-winnt"
 
 IUSE="test"
 
@@ -27,7 +27,7 @@ PATCHES=(
   "${FILESDIR}/${PV}/remove-extension-task.patch"
 )
 
-RDEPEND=">=app-arch/lzws-1.3 <app-arch/lzws-1.4"
+RDEPEND=">=app-arch/lzws-1.4 <app-arch/lzws-1.6"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-arch/ncompress )"
 
@@ -36,6 +36,7 @@ ruby_add_bdepend "
     dev-ruby/minitest:5
     dev-ruby/minitar
     dev-ruby/ocg
+    dev-ruby/parallel
   )
 "
 
