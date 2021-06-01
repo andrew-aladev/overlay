@@ -11,7 +11,7 @@ SRC_URI="https://github.com/andrew-aladev/lzws/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x64-cygwin ~x64-macos ~x64-winnt ~x86 ~x86-winnt"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~x64-cygwin ~x64-macos ~x64-winnt x86 ~x86-winnt"
 
 IUSE_COMPRESSOR_DICTIONARY="
   compressor_dictionary_linked-list
@@ -48,6 +48,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="!noman? ( app-text/asciidoc )"
+
+PATCHES=(
+  "${FILESDIR}/${PV}/cmake_generator.patch"
+)
 
 src_configure() {
   local mycmakeargs=(
