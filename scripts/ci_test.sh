@@ -74,6 +74,9 @@ for package_name in "${package_names[@]}"; do
       fi
     done
 
+    echo "Installing dependencies for package: \"${package}\""
+    bash -cl "build.sh -vo1 \"${package}\""
+
     echo "Testing package: \"${package}\", uses: \"${current_uses[@]}\""
     command="FEATURES=\"test\" USE=\"${current_uses[@]}\" build.sh -v1 \"${package}\""
 
