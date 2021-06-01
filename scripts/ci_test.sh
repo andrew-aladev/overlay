@@ -75,6 +75,7 @@ for package_name in "${package_names[@]}"; do
     done
 
     echo "Testing package: ${package}, uses: \"${current_uses[@]}\""
+    mkdir -p /etc/portage/{env,package.env,package.use}
     echo "FEATURES=\"test\"" > /etc/portage/env/current_package.conf
     echo "${package} current_package.conf" > /etc/portage/package.env/current_package
     echo "${package} ${current_uses[@]}" > /etc/portage/package.use/current_package
