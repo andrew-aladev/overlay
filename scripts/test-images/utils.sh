@@ -118,7 +118,7 @@ with_portage () {
   if [ "$processor" == "run_image" ]; then
     CONTAINER_OPTIONS="$PORTAGE_OPTIONS" run_image "$@" || error=$?
   else
-    $processor "$PORTAGE_OPTIONS" "$@" || error=$?
+    $processor $PORTAGE_OPTIONS "$@" || error=$?
   fi
 
   unmount "$portage" || :
