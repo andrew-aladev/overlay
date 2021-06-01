@@ -7,7 +7,12 @@ inherit cmake-multilib cmake-utils
 
 DESCRIPTION="LZW streaming compressor/decompressor compatible with UNIX compress."
 HOMEPAGE="https://github.com/andrew-aladev/lzws"
-SRC_URI="https://github.com/andrew-aladev/lzws/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+ARGTABLE3_TAG="release-v3.2.2"
+ARGTABLE3_P="${PN}-argtable3-${ARGTABLE3_TAG}"
+SRC_URI="
+  https://github.com/andrew-aladev/lzws/archive/v${PV}.tar.gz -> ${P}.tar.gz
+  https://github.com/andrew-aladev/argtable3/archive/refs/tags/${ARGTABLE3_TAG}.tar.gz -> ${ARGTABLE3_P}.tar.gz
+"
 
 LICENSE="BSD-3-Clause"
 SLOT="0"
@@ -50,8 +55,15 @@ DEPEND="${RDEPEND}"
 BDEPEND="!noman? ( app-text/asciidoc )"
 
 PATCHES=(
-  "${FILESDIR}/${PV}/cmake_generator.patch"
+  "${FILESDIR}/${PV}/remove_preload.patch"
 )
+
+src_unpack() {
+  default
+
+  rm -rf "${S}/argtable3" || die "failed to remove argtable3 directory"
+  mv "${WORKDIR}/argtable3-${ARGTABLE3_TAG}" "${S}/argtable3" || die "failed to move argtable3 directory"
+}
 
 src_configure() {
   local mycmakeargs=(
