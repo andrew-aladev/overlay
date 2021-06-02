@@ -9,6 +9,7 @@ services:
       - gentoo-portage:/var/db/repos/gentoo
   portage:
     image: puchuu/test_portage:latest
+    entrypoint: /bin/true
     volumes:
       - gentoo-portage:/var/db/repos/gentoo
 
