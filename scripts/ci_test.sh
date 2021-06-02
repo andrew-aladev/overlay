@@ -20,7 +20,6 @@ NOT_IMPORTANT_USES=(
   "noman"
   "ruby_targets_*"
   "static*"
-  "test"
 )
 
 # List available package names with versions.
@@ -65,6 +64,7 @@ for package_name in "${package_names[@]}"; do
 
   for ((combination = 0; combination < $combinations_length; combination++)); do
     current_uses=()
+    has_test_use=false
 
     for use_index in "${!important_uses[@]}"; do
       use="${important_uses[$use_index]}"
@@ -72,13 +72,22 @@ for package_name in "${package_names[@]}"; do
 
       if [[ $(($combination & $use_value)) -eq $use_value ]]; then
         current_uses+=("$use")
+        if [[ "$use" == "test" ]]; then
+          has_test_use=true
+        fi
       else
         current_uses+=("-${use}")
       fi
     done
 
     echo "Testing package: ${package}, uses: \"${current_uses[@]}\""
-    echo "${package} test.conf" > /etc/portage/package.env/current_package
+
+    if [ "$has_test_use" = true ]; then
+       echo "${package} test.conf" > /etc/portage/package.env/current_package
+    else
+       rm -f /etc/portage/package.env/current_package
+    fi
+
     echo "${package} ${current_uses[@]}" > /etc/portage/package.use/current_package
 
     command="build.sh -v1 ${package}"
