@@ -24,10 +24,12 @@ IUSE="test"
 
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
+  "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND=">=app-arch/zstd-1.4 <app-arch/zstd-1.5"
+RDEPEND=">=app-arch/zstd-1.4 <app-arch/zstd-1.6"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "
@@ -35,7 +37,6 @@ ruby_add_bdepend "
     dev-ruby/minitest:5
     dev-ruby/minitar
     dev-ruby/ocg
-    dev-ruby/parallel
   )
 "
 
