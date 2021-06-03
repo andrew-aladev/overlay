@@ -3,13 +3,13 @@ version: "3"
 services:
   overlay:
     image: puchuu/test-overlay_x86_64-unknown-linux-gnu:latest
-    entrypoint: /bin/true
+    command: tail -f /dev/null
     volumes:
       - .:/mnt/data
       - gentoo-portage:/var/db/repos/gentoo
   portage:
     image: puchuu/test_portage:latest
-    entrypoint: /bin/true
+    command: tail -f /dev/null
     volumes:
       - gentoo-portage:/var/db/repos/gentoo
 
