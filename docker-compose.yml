@@ -3,13 +3,13 @@ version: "3"
 services:
   overlay:
     image: puchuu/test-overlay_x86_64-unknown-linux-gnu:latest
-    entrypoint: /home/ci_test.sh
+    #entrypoint: /home/ci_test.sh
+    command: ls -la /var/db/repos/gentoo && ls -la /var/db/repos/gentoo && ls -la /mnt/data
     volumes:
       - .:/mnt/data
       - gentoo-portage:/var/db/repos/gentoo
   portage:
     image: puchuu/test_portage:latest
-    command: tail -f /dev/null
     volumes:
       - gentoo-portage:/var/db/repos/gentoo
 
