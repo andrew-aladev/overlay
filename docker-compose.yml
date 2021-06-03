@@ -9,7 +9,7 @@ services:
       - gentoo-portage:/var/db/repos/gentoo
   portage:
     image: puchuu/test_portage:latest
-    entrypoint: tail -f /dev/null
+    command: tail -f /dev/null
     volumes:
       - gentoo-portage:/var/db/repos/gentoo
 
