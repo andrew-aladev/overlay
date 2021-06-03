@@ -10,7 +10,6 @@ services:
       - gentoo-portage:/var/db/repos/gentoo
   portage:
     image: puchuu/test_portage:latest
-    command: ls -la /var/db/repos/gentoo
     volumes:
       - gentoo-portage:/var/db/repos/gentoo
 
