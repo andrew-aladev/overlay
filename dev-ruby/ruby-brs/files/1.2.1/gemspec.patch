@@ -1,0 +1,13 @@
+diff --git a/ruby-brs.gemspec b/ruby-brs.gemspec
+index 253003c..7a89f2c 100644
+--- a/ruby-brs.gemspec
++++ b/ruby-brs.gemspec
+@@ -29,7 +29,7 @@ GEMSPEC = Gem::Specification.new do |gem|
+   gem.add_development_dependency "simplecov"
+
+   gem.files =
+-    `git ls-files -z --directory {ext,lib}`.split("\x0") +
++    `find {ext,lib} -type f -print0`.split("\x0") +
+     %w[AUTHORS LICENSE README.md]
+   gem.require_paths = %w[lib]
+   gem.extensions    = %w[ext/extconf.rb]
