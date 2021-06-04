@@ -1,8 +1,8 @@
 diff --git a/ruby-zstds.gemspec b/ruby-zstds.gemspec
-index cec3601..0b38486 100644
+index f6ed4e9..351dc84 100644
 --- a/ruby-zstds.gemspec
 +++ b/ruby-zstds.gemspec
-@@ -29,7 +29,7 @@ GEMSPEC = Gem::Specification.new do |gem|
+@@ -30,7 +30,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
 
    gem.files =

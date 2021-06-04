@@ -1,8 +1,8 @@
 diff --git a/ruby-brs.gemspec b/ruby-brs.gemspec
-index 253003c..7a89f2c 100644
+index 5ebd8d9..8486415 100644
 --- a/ruby-brs.gemspec
 +++ b/ruby-brs.gemspec
-@@ -29,7 +29,7 @@ GEMSPEC = Gem::Specification.new do |gem|
+@@ -30,7 +30,7 @@ GEMSPEC = Gem::Specification.new do |gem|
    gem.add_development_dependency "simplecov"
 
    gem.files =
