@@ -1,5 +1,4 @@
 app-eselect/eselect-ruby ~x86
-dev-lang/ruby:2.5 ~x86
 dev-lang/ruby:2.6 ~x86
 dev-lang/ruby:2.7 ~x86
 dev-lang/ruby:3.0 ~x86
@@ -15,6 +14,7 @@ dev-ruby/concurrent-ruby ~x86
 dev-ruby/did_you_mean ~x86
 dev-ruby/json ~x86
 dev-ruby/kpeg ~x86
+dev-ruby/minitar ~x86
 dev-ruby/minitest ~x86
 dev-ruby/net-telnet ~x86
 dev-ruby/parallel ~x86
@@ -25,3 +25,4 @@ dev-ruby/rexml ~x86
 dev-ruby/rss ~x86
 dev-ruby/typeprof ~x86
 dev-ruby/xmlrpc ~x86
+dev-ruby/webrick ~x86

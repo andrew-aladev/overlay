@@ -1,5 +1,4 @@
 app-eselect/eselect-ruby ~amd64
-dev-lang/ruby:2.5 ~amd64
 dev-lang/ruby:2.6 ~amd64
 dev-lang/ruby:2.7 ~amd64
 dev-lang/ruby:3.0 ~amd64
@@ -15,6 +14,7 @@ dev-ruby/concurrent-ruby ~amd64
 dev-ruby/did_you_mean ~amd64
 dev-ruby/json ~amd64
 dev-ruby/kpeg ~amd64
+dev-ruby/minitar ~amd64
 dev-ruby/minitest ~amd64
 dev-ruby/net-telnet ~amd64
 dev-ruby/parallel ~amd64
@@ -25,3 +25,4 @@ dev-ruby/rexml ~amd64
 dev-ruby/rss ~amd64
 dev-ruby/typeprof ~amd64
 dev-ruby/xmlrpc ~amd64
+dev-ruby/webrick ~amd64

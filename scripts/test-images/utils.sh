@@ -106,20 +106,12 @@ run_image () {
 
 # -- portage --
 
-with_portage () {
-  processor="$1"
-  shift 1
-
+build_with_portage () {
   portage=$(from "${DOCKER_HOST}/${DOCKER_USERNAME}/test_portage")
   portage_root=$(mount "$portage") || error=$?
 
-  PORTAGE_OPTIONS="${CONTAINER_OPTIONS} --volume ${portage_root}/var/db/repos/gentoo:/var/db/repos/gentoo"
-
-  if [ "$processor" == "run_image" ]; then
-    CONTAINER_OPTIONS="$PORTAGE_OPTIONS" run_image "$@" || error=$?
-  else
-    $processor $PORTAGE_OPTIONS "$@" || error=$?
-  fi
+  build --volume "${portage_root}/var/db/repos/gentoo:/var/db/repos/gentoo" "$@" \
+    || error=$?
 
   unmount "$portage" || :
   remove "$portage" || :
@@ -127,12 +119,4 @@ with_portage () {
   if [ ! -z $error ]; then
     return $error
   fi
-}
-
-build_with_portage () {
-  with_portage "build" "$@"
-}
-
-run_image_with_portage () {
-  with_portage "run_image" "$@"
 }
