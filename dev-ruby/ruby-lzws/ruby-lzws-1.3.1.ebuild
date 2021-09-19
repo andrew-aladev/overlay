@@ -25,6 +25,7 @@ IUSE="test"
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/set.patch"
 )
 
 RDEPEND=">=app-arch/lzws-1.4 <app-arch/lzws-1.6"

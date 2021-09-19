@@ -25,6 +25,7 @@ IUSE="test"
 PATCHES=(
   "${FILESDIR}/${PV}/gemspec.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/set.patch"
 )
 
 RDEPEND=">=app-arch/brotli-1.0 <app-arch/brotli-1.1"

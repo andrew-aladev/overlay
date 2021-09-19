@@ -1,0 +1,24 @@
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index fac273a..c0468bd 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -3,6 +3,7 @@
+ 
+ require "lzws/stream/reader"
+ require "lzws/string"
++require "set"
+ require "socket"
+ require "stringio"
+ 
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index 468f917..3ed233f 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -4,6 +4,7 @@
+ require "lzws/stream/writer"
+ require "lzws/string"
+ require "ocg"
++require "set"
+ require "socket"
+ require "stringio"
+ 

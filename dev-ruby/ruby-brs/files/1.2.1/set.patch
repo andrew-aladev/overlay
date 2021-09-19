@@ -1,0 +1,24 @@
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index f37872c..34d1488 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -3,6 +3,7 @@
+ 
+ require "brs/stream/reader"
+ require "brs/string"
++require "set"
+ require "socket"
+ require "stringio"
+ 
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index 67a075c..13cfa6d 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -3,6 +3,7 @@
+ 
+ require "brs/stream/writer"
+ require "brs/string"
++require "set"
+ require "socket"
+ require "stringio"
+ 

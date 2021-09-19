@@ -1,0 +1,24 @@
+diff --git a/test/stream/reader.test.rb b/test/stream/reader.test.rb
+index fdbcaff..23f62a2 100644
+--- a/test/stream/reader.test.rb
++++ b/test/stream/reader.test.rb
+@@ -1,6 +1,7 @@
+ # Ruby bindings for zstd library.
+ # Copyright (c) 2019 AUTHORS, MIT License.
+ 
++require "set"
+ require "socket"
+ require "zstds/stream/reader"
+ require "zstds/string"
+diff --git a/test/stream/writer.test.rb b/test/stream/writer.test.rb
+index b8a8660..1336852 100644
+--- a/test/stream/writer.test.rb
++++ b/test/stream/writer.test.rb
+@@ -1,6 +1,7 @@
+ # Ruby bindings for zstd library.
+ # Copyright (c) 2019 AUTHORS, MIT License.
+ 
++require "set"
+ require "socket"
+ require "stringio"
+ require "zstds/stream/writer"
