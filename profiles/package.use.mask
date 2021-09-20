@@ -1,4 +1,0 @@
-dev-ruby/ocg -ruby_targets_ruby26 -ruby_targets_ruby27 -ruby_targets_ruby30
-dev-ruby/ruby-lzws -ruby_targets_ruby26 -ruby_targets_ruby27 -ruby_targets_ruby30
-dev-ruby/ruby-brs -ruby_targets_ruby26 -ruby_targets_ruby27 -ruby_targets_ruby30
-dev-ruby/ruby-zstds -ruby_targets_ruby26 -ruby_targets_ruby27 -ruby_targets_ruby30

@@ -26,3 +26,8 @@ dev-ruby/rss ~x86
 dev-ruby/typeprof ~x86
 dev-ruby/xmlrpc ~x86
 dev-ruby/webrick ~x86
+
+dev-ruby/ocg ~x86
+dev-ruby/ruby-lzws ~x86
+dev-ruby/ruby-brs ~x86
+dev-ruby/ruby-zstds ~x86
