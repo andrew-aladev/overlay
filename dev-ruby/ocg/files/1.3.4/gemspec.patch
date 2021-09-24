@@ -1,0 +1,12 @@
+diff --git a/ocg.gemspec b/ocg.gemspec
+index e942f19..e44c3d5 100644
+--- a/ocg.gemspec
++++ b/ocg.gemspec
+@@ -26,7 +26,7 @@ GEMSPEC = Gem::Specification.new do |gem|
+   gem.add_development_dependency "simplecov"
+
+   gem.files =
+-    `git ls-files -z --directory lib`.split("\x0") +
++    `find lib -type f -print0`.split("\x0") +
+     %w[AUTHORS LICENSE README.md]
+   gem.require_paths = %w[lib]
