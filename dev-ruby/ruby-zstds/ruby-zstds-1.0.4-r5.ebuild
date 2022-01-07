@@ -10,27 +10,27 @@ RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_RECIPE_TEST="rake"
 RUBY_FAKEGEM_TASK_TEST="test"
 
-inherit ruby-fakegem git-r3
+inherit ruby-fakegem
 
-DESCRIPTION="Ruby bindings for brotli library."
-HOMEPAGE="https://github.com/andrew-aladev/ruby-brs"
-EGIT_REPO_URI="https://github.com/andrew-aladev/ruby-brs.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/all/${P}"
-SRC_URI=""
+DESCRIPTION="Ruby bindings for zstd library."
+HOMEPAGE="https://github.com/andrew-aladev/ruby-zstds"
+SRC_URI="https://github.com/andrew-aladev/ruby-zstds/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~x64-cygwin ~x64-macos ~x64-winnt x86 ~x86-winnt"
 
 IUSE="test"
 
 PATCHES=(
+  "${FILESDIR}/${PV}/add-tmp-directory.patch"
   "${FILESDIR}/${PV}/gemspec.patch"
-  "${FILESDIR}/${PV}/live-version.patch"
+  "${FILESDIR}/${PV}/port-autoset.patch"
   "${FILESDIR}/${PV}/remove-extension-task.patch"
+  "${FILESDIR}/${PV}/remove-library-duplicates.patch"
 )
 
-RDEPEND=">=app-arch/brotli-1.0"
+RDEPEND=">=app-arch/zstd-1.4 <app-arch/zstd-1.6"
 DEPEND="${RDEPEND}"
 
 ruby_add_bdepend "
@@ -38,7 +38,6 @@ ruby_add_bdepend "
     dev-ruby/minitest:5
     dev-ruby/minitar
     dev-ruby/ocg
-    dev-ruby/parallel
   )
 "
 
@@ -48,5 +47,5 @@ each_ruby_configure() {
 
 each_ruby_compile() {
   emake V=1 -Cext
-  mv ext/brs_ext.so lib/ || die
+  mv ext/zstds_ext.so lib/ || die
 }
