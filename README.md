@@ -22,7 +22,7 @@ END
 Use the following command:
 
 ```bash
-sudo layman -o "https://raw.githubusercontent.com/andrew-aladev/overlay/master/repositories.xml" -f -a andrew-aladev
+sudo layman -o "https://raw.githubusercontent.com/andrew-aladev/overlay/master/repositories.xml" -a andrew-aladev
 ```
 
 ## Usage
