@@ -27,5 +27,5 @@ Build is rootless, just use your regular `my_user`.
 
 ## Related bugs
 
-- [virtual/ruby-ssl: unmask for ruby](https://bugs.gentoo.org/722566)
 - [sys-libs/musl: undefined reference to __stack_chk_fail_local (x86)](https://www.openwall.com/lists/musl/2018/09/11/2)
+- [dev-lang/ruby-3.1.1: patch -p1 failed with 900-musl-coroutine.patch](https://bugs.gentoo.org/835038)
