@@ -12,4 +12,4 @@ jobs:
       - name: Docker compose
         run: docker-compose up -d
       - name: CI test
-        run: docker-compose run overlay /home/ci_test.sh
+        run: docker-compose run overlay /mnt/data/scripts/test-images/ci_test.sh
