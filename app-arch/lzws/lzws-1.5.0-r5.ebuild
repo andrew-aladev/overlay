@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-multilib cmake-utils
+inherit cmake-multilib cmake
 
 DESCRIPTION="LZW streaming compressor/decompressor compatible with UNIX compress."
 HOMEPAGE="https://github.com/andrew-aladev/lzws"
@@ -53,6 +53,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="!noman? ( app-text/asciidoc )"
+
+PATCHES=(
+  "${FILESDIR}/${PV}/remove_preload.patch"
+)
 
 src_unpack() {
   default
