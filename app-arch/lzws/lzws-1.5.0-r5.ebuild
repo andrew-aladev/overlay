@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-multilib cmake
+inherit cmake-multilib
 
 DESCRIPTION="LZW streaming compressor/decompressor compatible with UNIX compress."
 HOMEPAGE="https://github.com/andrew-aladev/lzws"
